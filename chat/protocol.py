@@ -1,4 +1,4 @@
-def parcel(msg, *, myself, to):
+def parcel(msg, *, myself, to="common"):
     return f"{myself}\n{to}\n{msg}".encode()
 
 

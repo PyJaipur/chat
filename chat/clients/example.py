@@ -1,4 +1,5 @@
 from chat.protocol import parcel
+from chat.color import green
 
 
 def user_input(host, port):
@@ -15,7 +16,14 @@ def user_input(host, port):
 
     to send messages.
     """
+    while True:
+        msg = input()
+        with socket.socket() as s:
+            s.connect((host, port))
+            s.sendall(parcel(msg, myself="example"))
 
 
-def show_message(msg: str, myself: str, sender: str) -> str:
-    ...
+def show_message(msg: str, sender: str, myself="example") -> str:
+    if sender == myself:
+        sender = green(sender)
+    return f"{sender:>15}: {msg}"
