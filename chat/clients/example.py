@@ -1,5 +1,6 @@
+import socket
 from chat.protocol import parcel
-from chat.color import green
+from chat.colors import green
 
 
 def user_input(host, port):
